@@ -1,0 +1,42 @@
+{% extends "post.html" %}
+{% block content %}
+{{ super() }}
+{% endblock %}
+{% block article %}
+<br>
+So I had this ssd laying around that I rendered usage at some point due to me 
+pulling it out while powered on. 
+The device would register in the device tree but would ignore any writes to it.
+I tried resetting it with the smartctl tool, updating the firmware on it to v2 and even
+this convoluted process described in one of the forums by a Crucuial employee recommending
+powering it on from a mains powered computer and power cycling it over an hour. 
+None of these worked so I forgot about it.
+
+And so recently I watched a CCC talk about hardware hacking and the basic techniques were just
+finding serial ports and hoping some debug shell is operational on them. Usually these are created 
+while the firmware is being developed and they just forget to remove the functionalityThe problem was to do with the firmware. When I brake something
+stupidly like this I usually have a bit of extra drive to fix it, so I went about  
+<br><img src="{{ url_for('static', filename='ssd1.jpg') }}">
+<br>
+Seeing as the output was kind of cryptic I investigated the hexdump thinking maybe they were binary commands
+but I didn't get anything out of that. Seeing as I had the firmware v2 updater I decided to have a look at that
+in radare2, for purely investigative reasons.
+So the updater is basically a tinycore linux image that you put onto a usb that handles updating the ssd for you.
+On the image was a kernel, syslinux configuration and the ramdisk, so I extracted the ramdisk 
+and began my investigation of how exactly this updater operated.
+I was easily able to find the binary that was being flashed onto the ssd.
+It was unencrypted raw binary score! It looks like this binary is for the msp430 16 bit microcontroller. I was
+kind of hoping I could get some insight into the marvell controller as I couldnt find any documentation for those chips
+rnywhere. Da Illuminati Jews have total control over these cpus no doubt, I decided to ignore that as the fnords 
+grew heavy and I got back to investigating the binary.
+Of course it was obvious I should look for a list of commands that I could use on the command prompt and sure
+enough I found them Investigating the layout of this was interesting enough
+<br><img src="{{ url_for('static', filename='ssd2.jpg') }}" width="400">
+<br>
+Anyway I feel like I've said a lot here. I wish I had more time to investigate the firmware on these ssds so I can gain
+access to the Marvell controller on them. That would be very cool so if anybody wants to pick that up pls get back to me.
+I recommend looking at the firmware on the msp430 and see if you can hack at that to get a shell up from the marvell controller
+through the msp430. \m/
+<br><img src="{{ url_for('static', filename='ssd3.jpg') }}" width="400">
+{% endblock %}
+
