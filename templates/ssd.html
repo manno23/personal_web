@@ -6,16 +6,16 @@
 
 <br>
 <p>
-So I had this ssd laying around that I rendered useless at some point, due to me 
+So I had this Crucial MX100 ssd laying around that I rendered useless at some point, due to me 
 pulling it out while powered on. 
 It would register in the device tree but ignored any writes to it, without throwing any sort
 of error.
 I tried a few different ways to reset it including, using the smartctl tool, updating the firmware on it to v2 and even
 this convoluted process described in one of the forums by a Crucuial employee recommending
 powering it on from a mains powered computer and power cycling it over an hour. 
-None of these worked so I forgot about it.<br>
+None of these worked so I decided to let it RIP and forgot about it.<br>
 <br>
-And so recently I watched a CCC talk about hardware hacking and the basic techniques were just
+Recently I watched a CC3C talk about hardware hacking, and the basic techniques were just
 finding serial ports and hoping some debug shell is operational on them. Usually these are created 
 while the firmware is being developed and they just forget to remove the functionality, leaving it
 for us inquisitive people to play with.<br>
@@ -24,24 +24,26 @@ for us inquisitive people to play with.<br>
 <br>
 
 <p>
-So the updater is basically a tinycore linux image that you put onto a usb that handles updating the ssd for you.
-On the image was a kernel, syslinux configuration and the ramdisk, so I extracted the ramdisk 
-and began my investigation of how exactly this updater operated.
-I was easily able to find the firmware binary and it was unencrypted raw binary score! 
-binary is for the msp430 16 bit microcontroller. I was
-kind of hoping I could get some insight into the dual core Marvell microcontroller as I couldnt find any documentation for those chips
-anywhere. <br>
-Seeing as I had the firmware v2 updater I decided to have a look at that
-in radare2, for purely investigative reasons.<br>
-Of course it was obvious I should look for a list of commands that I could use on the command prompt and sure
+I had this updater tool that I used to update the firmware of the ssd, so there has to be some useful information
+on that if i can extract the firmware unencrypted from it.
+The updater is basically a tinycore linux image that you put onto a usb that handles updating the ssd for you.
+I extracted the filesystem on the linux initramfs and began my investigation of how exactly this updater operated.
+It wasnt long for me to find the firmware binary, and it was unencrypted raw binary, score! 
+The binary it seems is for the msp430 16 bit microcontroller. I was kind of hoping I could get some insight into 
+the Marvell microcontroller as I couldnt find any documentation for those chips anywhere. 
+The secrecy just makes it more of a tempting target.<br>
+I spent some time going over the firmware in radare2 to get some idea of how it commincated with the Marvell.
+I imagine that is running linux itself so it would be great to a shell on that somehow.
+The list of commands were found within the serial prompt code of the firmware, that I could use on the command prompt and sure
 enough I found them Investigating the layout of this was interesting enough
+<br>
 </p>
 <br>
 <img src="{{ url_for('static', filename='ssd1.jpg') }}"><img src="{{ url_for('static', filename='ssd2.jpg') }}">
 <br>
 
 <p>
-Anyway I feel like I've said a lot here. I wish I had more time to investigate the firmware on these ssds so I can gain
+I wish I had more time to investigate the firmware on these ssds so I can gain
 access to the Marvell controller on them. That would be very cool so if anybody wants to pick that up pls get back to me.
 I recommend looking at the firmware on the msp430 and see if you can hack at that to get a shell up from the marvell controller
 through the msp430. \m/
@@ -58,8 +60,9 @@ Pressing tab gives you this output:
 <br><iframe src="{{ url_for('static', filename='prompt.txt') }}"></iframe>
 <br><iframe src="{{ url_for('static', filename='commands.txt') }}"></iframe>
 <br>
-<p> This is a dump of the output i got from going through these commands one by one.  </p>
-<br><iframe src="{{ url_for('static', filename='capture.txt') }}"></iframe>
+<p> This is a small section of the dump of the output I got going through these commands one by one.<br>
+As you can see it is a very low level debugging set of commands. Full dump is <a href="{{ url_for('static', filename='capture.txt') }}">here</a>.</p>
+<br><iframe src="{{ url_for('static', filename='capture_example.txt') }}"></iframe>
 <br><br><br><br>
 {% endblock %}
 
