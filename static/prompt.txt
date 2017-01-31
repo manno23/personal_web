@@ -1,0 +1,35 @@
+
+??? cmd
+:
+				Display FTL Bad Blocks. Includes factory and grown defects.
+				Bad Block Count
+		Back Ground Task Status
+				Display the SATA Command Log
+				Dump FTL Task Statistics
+				Dump FW TCB
+				[/B|H|W] [addr|range] (DUmp Mem 8/16/32 Bits )
+				Erase BB
+				Erase All Error Log
+				Enumerates the Drive
+		[PTU][ALL],Erase specified PTU block,ALL - erase all blocks( includes FW)
+		Erase Super block[BlkNo]
+			Erase FW in NAND
+		Erase Nor Flash[Sector]
+			Read NAND Unique Fuse IDs
+		Low Level Format. Erase NAND data blocks and rebuild FTL Bad Block List
+				Read Serial Log in NOR Flash
+				Read Serial Information Output
+		[CPU|BMCPU|BM|ATA|PHY|TIME|UART|TEST|SEQ|ECU|NAND|AES|FCT|I2C] Display Regs
+		[ElClass] [P[hysicalAddr]]  Read All Error Log: 0=Critical, 1=Generic, 2=All
+			[ON|OFF] Turn on/off Serial Port
+			[Blk] Dispaly each TU's write user in the SBlk
+			[ON|OFF] Turn on/off ATA command Serial Debug
+			Print Firmware Version, Meta and Manufacturing Data
+			Show Descriptor Fifo Info
+			Show Non-align Disk Write/Read SSD Table FIFO
+			Print SATA Debug Info
+			Print NORMAL debug message
+			  Dump serial log into NOR
+			  Erase serial log into NOR
+			Download BL/FW/TCG/... binary using XMODEM protocol
+

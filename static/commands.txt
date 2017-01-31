@@ -1,0 +1,34 @@
+
+These were the commands I found when searching in the v2 firmware.
+
+BBALL
+BBCOUNT
+BGTSKSTAT
+CMDLOG
+DFTLT
+DT
+DU - dumps memory with location and length parameters
+ERASEBB
+EEL
+ENUM
+ERASEFLASH
+ERASESBLK
+ERASEFW
+ERASENOR
+FID
+LLFORMAT
+READLOG
+READSER
+REG
+REL
+SER
+SHOWBLK
+SHOWCMD
+VER
+SHOWDES
+SHOWSSDTBL
+SATA
+DB
+DUMPLOG
+ESL
+DNLDBIN

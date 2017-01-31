@@ -10,20 +10,13 @@ blog_entries = ['ssd', 'hydra', 'firewall', 'firmware']
 def root():
     return render_template('root.html')
 
-article = {
-    'ssd': "This is the article for the ssd",
-    'hydra': "This is the article for hydra",
-    'firewall': "This is the article for the firewall",
-    'firmware': "This is the article for firmware"
-}
-
 @app.route('/<name>')
 @app.errorhandler(404)
 def blog(name=None):
     if name == 'ssd':
         return render_template('ssd.html', name=name)
     if name in blog_entries:
-        return render_template('post.html', name=name, article=article[name])
+        return render_template('post.html', name=name, article="Incoming...")
     else:
         return render_template('missing.html'), 404
 

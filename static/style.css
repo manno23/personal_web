@@ -88,8 +88,9 @@ p.spiel
 /* Posts */
 
 #post    { 
+	padding-top: 2em;
 	padding: 40px; 
-	width: 70%;
+	width: 1000px;
 }
 #post h1 { }
 #post p  
@@ -98,5 +99,17 @@ p.spiel
 }
 #post img {
 	padding: 10px;
-	width: 50%;
+	border-radius: 25px;
+	display: block;
+	margin: auto;
+	width: 80%;
 }
+#post iframe {
+	width: 90%;
+	height: 650px;
+	display: block;
+	margin: auto;
+	background-color: white;
+}
+#diagram {
+
