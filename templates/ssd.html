@@ -3,29 +3,23 @@
 {{ super() }}
 {% endblock %}
 {% block article %}
-
-<br>
 <p>
 So I had this Crucial MX100 ssd laying around that I rendered useless at some point, due to me 
-pulling it out while powered on. 
-It would register in the device tree but ignored any writes to it, without throwing any sort
-of error.
+pulling it out while powered on.  It would register in the device tree but ignored any writes to it, 
+without throwing any sort of error.<br>
 I tried a few different ways to reset it including, using the smartctl tool, updating the firmware on it to v2 and even
 this convoluted process described in one of the forums by a Crucuial employee recommending
 powering it on from a mains powered computer and power cycling it over an hour. 
 None of these worked so I decided to let it RIP and forgot about it.<br>
-<br>
 Recently I watched a CC3C talk about hardware hacking, and the basic techniques were just
 finding serial ports and hoping some debug shell is operational on them. Usually these are created 
 while the firmware is being developed and they just forget to remove the functionality, leaving it
 for us inquisitive people to play with.<br>
 </p>
-<br><img id="diagram" src="{{ url_for('static', filename='ssd.jpg') }}">
-<br>
-
+<img id="diagram" src="{{ url_for('static', filename='cmp_img/ssd.jpg') }}">
 <p>
 I had this updater tool that I used to update the firmware of the ssd, so there has to be some useful information
-on that if i can extract the firmware unencrypted from it.
+on that if i can extract the firmware unencrypted from it.<br>
 The updater is basically a tinycore linux image that you put onto a usb that handles updating the ssd for you.
 I extracted the filesystem on the linux initramfs and began my investigation of how exactly this updater operated.
 It wasnt long for me to find the firmware binary, and it was unencrypted raw binary, score! 
@@ -34,35 +28,27 @@ the Marvell microcontroller as I couldnt find any documentation for those chips 
 The secrecy just makes it more of a tempting target.<br>
 I spent some time going over the firmware in radare2 to get some idea of how it commincated with the Marvell.
 I imagine that is running linux itself so it would be great to a shell on that somehow.
-The list of commands were found within the serial prompt code of the firmware, that I could use on the command prompt and sure
-enough I found them Investigating the layout of this was interesting enough
-<br>
+The list of commands were found within the serial prompt code of the firmware, that I could use on the command prompt 
+and sure enough I found them. 
 </p>
-<br>
-<img src="{{ url_for('static', filename='ssd1.jpg') }}"><img src="{{ url_for('static', filename='ssd2.jpg') }}">
-<br>
-
+<img src="{{ url_for('static', filename='cmp_img/ssd1.jpg') }}"><img src="{{ url_for('static', filename='cmp_img/ssd2.jpg') }}">
 <p>
 I wish I had more time to investigate the firmware on these ssds so I can gain
 access to the Marvell controller on them. That would be very cool so if anybody wants to pick that up pls get back to me.
 I recommend looking at the firmware on the msp430 and see if you can hack at that to get a shell up from the marvell controller
 through the msp430. \m/
 </p>
-<br>
 <p> 
 Oh yeah, within these set of commands was a low level format. I dont know precisely what this did when I used it
 (as most of the firmware is still obfuscated and hidden I didnt get around to discovering how it works)
 , though it got everything working as normal again. SSD saved. <br>
-<br>
 Here is the output I first got after playing in the command prompt.
 Pressing tab gives you this output: 
 </p>
-<br><iframe src="{{ url_for('static', filename='prompt.txt') }}"></iframe>
-<br><iframe src="{{ url_for('static', filename='commands.txt') }}"></iframe>
-<br>
+<iframe src="{{ url_for('static', filename='prompt.txt') }}"></iframe>
+<iframe src="{{ url_for('static', filename='commands.txt') }}"></iframe>
 <p> This is a small section of the dump of the output I got going through these commands one by one.<br>
 As you can see it is a very low level debugging set of commands. Full dump is <a href="{{ url_for('static', filename='capture.txt') }}">here</a>.</p>
-<br><iframe src="{{ url_for('static', filename='capture_example.txt') }}"></iframe>
-<br><br><br><br>
+<iframe src="{{ url_for('static', filename='capture_example.txt') }}"></iframe>
 {% endblock %}
 
