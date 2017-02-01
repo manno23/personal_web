@@ -3,89 +3,55 @@
 
 /* General Style */
 
-* 
-{
-	margin: 0px;
-}
+* { margin: 0px; }
 
 @media (min-resolution: 96dpi) {
-	html { font-size: 1.2em; }
-	p.spiel { width: 800px; }
-	#content { width: 1000px; }
+	body { font-size: 1.2em; }
+	#content{ width: 900px; }
 }
+
 @media (min-resolution: 192dpi) {
-	html { font-size: 3.0em; }
+	body { font-size: 3.0em; }
+	#content{ width: 100% } 
 }
 
-html, body 
-{
+html, body { height: 100%; background-color: #f0fdfd; }
+
+.wrapper { min-height: 100%; height: auto !important;
 	height: 100%;
-	background-color: #f0fdfd;
+	margin: 0 auto -2em;
 }
 
-.wrapper 
-{
-	min-height: 100%;
-	height: auto !important;
-	height: 100%;
-	margin: 0 auto -1.5em;
-}
+.footer, .push { height: 0em; }
 
-.footer, .push 
-{
-	margin-left: 0.5em;
-	height: 0em;
-}
+#footer { font-size: 0.6em; padding: 1em; }
 
-#footer
-{
-	font-size: 0.7em;
-	padding: 2em;
-	padding-bottom: 1em;
-}
+#content { padding-bottom: 4em; }
 
 
 /* Top Navigation Bar */
 
-#shiggy
-{
-	font-size: 1.0em;
-}
+#shiggy { font-size: 1.0em; background-color: #d0dddd; padding: 0.5em; }
 
-#diggy
-{
-	margin: 0px;
-	padding-left: -1em;
-	padding-top: 15px;
+#diggy { margin: 0px; padding-left: -1em; padding-top: 15px; }
+#diggy li { display: inline; list-style-type: none;
+	padding-right: 10px; text-decoration: none;
 }
+#diggy li a { text-decoration: none; color: #3366ff; }
+#diggy li a:hover { color: #6699ff; } 
 
-#diggy li 
-{
-	display: inline;
-	list-style-type: none;
-	padding-right: 10px;
-	text-decoration: none;
-}
+#diggy li.honcho { margin-right: 1em; color: #ff6666; }
+#diggy li.honcho a { color: #ff6666; }
+#diggy li.honcho a:hover { color: #cd0000; }
 
-#diggy li a
-{
-	text-decoration: none;
-	color: #3366ff;
-}
 
-#diggy li a:hover
-{
-	color: #99ccff;
-}
+
+/* Root Page */
 
 p.spiel
 {
 	padding: 1em;
 }
-
-
-
-/* Links List */
 
 .links ul
 {
@@ -95,7 +61,6 @@ p.spiel
 .list li
 {
 	list-style-type: none;
-	font-size: 1.3em;
 	padding: 0.1em;
 }
 
@@ -105,12 +70,10 @@ p.spiel
 
 #post    { 
 	padding-top: 2em;
-	padding: 40px; 
 }
-#post h1 { }
 #post p  
 { 
-	padding: 10px;
+	padding: 1em;
 }
 #post img {
 	width: 90%;
@@ -120,12 +83,10 @@ p.spiel
 	margin: auto;
 }
 #post iframe {
-	width: 100%;
+	width: 90%;
 	height: 650px;
 	display: block;
 	margin: auto;
 	background-color: white;
 	font-size: 3.0em;
 }
-#diagram {
-
