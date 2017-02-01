@@ -5,17 +5,8 @@
 
 * { margin: 0px; }
 
-@media (min-resolution: 96dpi) {
-	body { font-size: 1.2em; }
-	#content{ width: 900px; }
-}
-
-@media (min-resolution: 192dpi) {
-	body { font-size: 3.0em; }
-	#content{ width: 100% } 
-}
-
 html, body { height: 100%; background-color: #f0fdfd; }
+body { font-size: 1.2em; }
 
 .wrapper { min-height: 100%; height: auto !important;
 	height: 100%;
@@ -26,7 +17,17 @@ html, body { height: 100%; background-color: #f0fdfd; }
 
 #footer { font-size: 0.6em; padding: 1em; }
 
-#content { padding-bottom: 4em; }
+#content { padding-bottom: 4em; width: 900px; }
+
+@media (min-resolution: 192dpi) {
+	body { font-size: 3.0em; }
+	#content { width: 100% } 
+}
+
+@media only screen and (min-device-width: 375px) and (-webkit-min-device-pixel-ratio: 2) {
+	body { font-size: 3.0em; }
+	#content { width: 100% } 
+}
 
 
 /* Top Navigation Bar */
