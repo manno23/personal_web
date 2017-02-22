@@ -15,6 +15,8 @@ def root():
 def blog(name=None):
     if name == 'ssd':
         return render_template('ssd.html', name=name)
+    if name == 'hydra':
+        return render_template('hydra.html', name=name)
     if name in blog_entries:
         return render_template('post.html', name=name, article="Incoming...")
     else:
