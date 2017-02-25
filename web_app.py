@@ -18,7 +18,7 @@ def blog(name=None):
     if name == 'hydra':
         return render_template('hydra.html', name=name)
     if name in blog_entries:
-        return render_template('post.html', name=name, article="Incoming...")
+        return render_template('post.html', name=name)
     else:
         return render_template('missing.html'), 404
 
