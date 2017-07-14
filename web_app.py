@@ -5,7 +5,6 @@ app = Flask(__name__)
 blog_entries = ['ssd', 'hydra', 'firewall', 'firmware']
 
 
-
 @app.route("/") 
 def root():
     return render_template('root.html')
@@ -13,6 +12,8 @@ def root():
 @app.route('/<name>')
 @app.errorhandler(404)
 def blog(name=None):
+    if name == 'store':
+        return render_template('store.html', name=name)
     if name == 'ssd':
         return render_template('ssd.html', name=name)
     if name == 'hydra':

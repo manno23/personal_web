@@ -35,7 +35,8 @@ body { font-size: 1.2em; }
 #shiggy { font-size: 1.0em; background-color: #d0dddd; padding: 0.5em; }
 
 #diggy { margin: 0px; padding-left: -1em; padding-top: 15px; }
-#diggy li { display: inline; list-style-type: none;
+#diggy li { 
+	display: inline; list-style-type: none;
 	padding-right: 10px; text-decoration: none;
 }
 #diggy li a { text-decoration: none; color: #3366ff; }
@@ -45,6 +46,9 @@ body { font-size: 1.2em; }
 #diggy li.honcho a { color: #ff6666; }
 #diggy li.honcho a:hover { color: #cd0000; }
 
+#diggy li.store { color: #44bc33; }
+#diggy li.store a { color: #44bc33; }
+#diggy li.store a:hover { color: #66dc33; }
 
 
 /* Root Page */
@@ -66,14 +70,12 @@ p.spiel
 }
 
 
-
 /* Posts */
 
-#post    { 
+#post { 
 	padding-top: 2em;
 }
-#post p  
-{ 
+#post p { 
 	padding: 1em;
 }
 #post img {
@@ -91,3 +93,18 @@ p.spiel
 	background-color: white;
 	font-size: 3.0em;
 }
+
+
+/* Store */
+
+#store { padding-top: 2em; padding: 2em; }
+#store .title { font-size: 1.2em; }
+#store .item { padding: 1em; }
+
+#store .image { padding: 1em; width: 100%; display: inline-block; *display: inline; zoom: 1; vertical-align: top; }
+
+#store .payment-options { padding: 1em; width: 100%; }
+#store .price .shipping-price .payment-options { display: inline-block; *display: inline; vertical-align: top; }
+
+#store .description { font-size: 0.8em; }
+
